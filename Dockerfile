@@ -1,7 +1,15 @@
 # Container image that runs your code
-FROM alpine:3.10
+FROM node:10.18-buster
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
+RUN apt-get update && sudo apt-get install ruby-full build-essential zlib1g-dev
+RUN echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
+RUN echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
+RUN echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+RUN source ~/.bashrc
+RUN gem update --system
+RUN gem install jekyll bundler
+RUN npm i -g firebase-tools
+
 COPY entrypoint.sh /entrypoint.sh
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
