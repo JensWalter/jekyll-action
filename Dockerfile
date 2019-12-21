@@ -6,7 +6,7 @@ RUN apt-get install -y ruby-full build-essential zlib1g-dev
 RUN echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
 RUN echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
 RUN echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
-RUN source ~/.bashrc
+RUN /bin/bash -c "source ~/.bashrc"
 RUN gem update --system
 RUN gem install jekyll bundler
 RUN npm i -g firebase-tools
