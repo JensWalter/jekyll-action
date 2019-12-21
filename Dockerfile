@@ -1,7 +1,7 @@
 # Container image that runs your code
 FROM node:10.18-buster
 
-RUN apt-get update && sudo apt-get install ruby-full build-essential zlib1g-dev
+RUN apt-get update && apt-get install ruby-full build-essential zlib1g-dev
 RUN echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
 RUN echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
 RUN echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
